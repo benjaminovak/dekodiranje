@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	    <title>Phr pregled</title>
+	    <link rel="shortcut icon" href="favicon.ico"/>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	    <script src="demo.js"></script>
+	    <script src="d3.min.js"></script>
+		<script src="d3pie.min.js"></script>
+		<script type='text/javascript' src='http://www.geolify.com/geojavascript.php?id=638'>preberiMesto(geolify_js_country_name())</script>
+	    <link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<center>
+					      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="generator()">Generiraj bolnike</button><span id="generator"></span>
+					</center>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-lg-2 col-md-2 col-sm-2"><p class="p1">Izberi osebo:</p></div>
+								<div class="col-lg-2 col-md-2 col-sm-2"><select class="form-control input-sm" id="predlogaBolnika"><option value=""></option></select></div>
+								<div class="col-lg-2 col-md-2 col-sm-2">
+									<button type="button" class="btn btn-primary btn-block" onclick="prikazi()">Prikaži</button><span id="generator"></span>
+								</div>
+								<div class="col-lg-1 col-md-2 col-sm-2"><p class="p1">Ali ehrId:</p></div>
+								<div class="col-lg-3 col-md-2 col-sm-2"><input id="meritveVitalnihZnakovEHRid" type="text" class="form-control input-mini" placeholder="7b661e12-3a98-21ad-c29e-2dc9f5a3d885"></div>
+								<div class="col-lg-2 col-md-2 col-sm-2">
+									<button type="button" class="btn btn-primary btn-block" onclick="prikaziPrekoEhrId()">Prikaži</button><span id="generator"></span>
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div class="container-fluid">
+							  <div class="row-fluid">
+							    <div class="span10">
+							 		<div class="col-lg-12 col-md-12 col-sm-12">
+							 			
+							 			<div class="col-lg-7 col-md-7 col-sm-7" class="d1" id="podatki"></div>
+							 			<div class="col-lg-5 col-md-5 col-sm-5" id="slika" ></div>
+							 		</div>
+							    </div>
+							    <div class="span2">
+									<div class="col-lg-12 col-md-12 col-sm-12"></div>
+							    </div>
+							  </div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="podatek">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row-fluid" >
+						 		<div class="col-lg-3 col-md-3 col-sm-3" id="visina">
+						 			
+						 		</div>
+								<div class="col-lg-9 col-md-9 col-sm-9">
+									<div id="masa" class="col-lg-3 col-md-3 col-sm-3"></div>
+									<div id="temperatura" class="col-lg-3 col-md-3 col-sm-3"></div>
+									<div id="nasicenost" class="col-lg-3 col-md-3 col-sm-3"></div>
+								</div>
+								<div class="col-lg-3 col-md-3 col-sm-3" id="visina">
+						 		</div>
+								<div class="col-lg-9 col-md-9 col-sm-9">
+									<div id="systolic" class="col-lg-3 col-md-3 col-sm-3"></div>
+									<div id="diastolic" class="col-lg-3 col-md-3 col-sm-3"></div>
+									<div id="index" class="col-lg-3 col-md-3 col-sm-3"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="a">
+	        <div class="col-sm-6 col-md-6">
+	        	<div class="panel panel-default">
+	        		<div class="panel-heading" id="predlogiKoncni">
+							<div class="row">
+								<p class="p6">Analiza stanja</p>
+							</div>
+					</div>
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row-fluid" id="analiza">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+	        </div>
+	        <div class="col-sm-6 col-sm-offset-0 col-md-6 col-md-offset-0">
+	        	<div class="panel panel-default">
+	        		<div class="panel-heading" id="predlogi">
+							<div class="row" id="graf">
+								<p class="p6">Spremnjanje teže po letih</p>
+							</div>
+						</div>
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row-fluid" id="teza">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+	        </div>
+      </div>
+      <div class="row">
+	        <div class="col-sm-6 col-md-6">
+	        	<div class="panel panel-default">
+	        		<div class="panel-heading" id="predlogi">
+							<div class="row">
+								<p class="p6">Twitter</p>
+							</div>
+					</div>
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row-fluid">
+								<a class="twitter-timeline" data-dnt="true" href="https://twitter.com/Zivljenje" data-widget-id="542457681668096001">Tweets by @Zivljenje</a>
+           							 <script>
+           							 	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+           							 </script>
+							</div>
+						</div>
+					</div>
+				</div>
+	        </div>
+	        <div class="col-sm-6 col-sm-offset-0 col-md-6 col-md-offset-0">
+	        	<div class="panel panel-default">
+	        		<div class="panel-heading" id="predlogiKoncni">
+							<div class="row" id="graf">
+								<p class="p6">Prebivalstvo</p>
+							</div>
+
+						</div>
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row-fluid" id="torta">
+								<center>
+								<div id="pieChart"></div>
+									<script src="d3.min.js"></script>
+									<script src="d3pie.min.js"></script>
+									<script>
+									var pie = new d3pie("pieChart", {"header":{"title":{"text":"Porazporeditev prebivalstva","color":"#337ab7","fontSize":20,"font":"open sans"},"subtitle":{"text":"glede ITM v evropi","color":"#2d8b2e","fontSize":17,"font":"open sans"},"titleSubtitlePadding":0},"footer":{"color":"#999999","fontSize":10,"font":"open sans","location":"bottom-left"},"size":{"canvasHeight":$("#torta").height(),"canvasWidth":$("#torta").width(),"pieInnerRadius":"30%","pieOuterRadius":"73%"},"data":{"sortOrder":"value-desc","content":[{"label":"Normalna","value":65,"color":"#2484c1"},{"label":"Debelost","value":26,"color":"#4daa4b"},{"label":"Podhranost","value":9,"color":"#90c469"}]},"labels":{"outer":{"pieDistance":10},"inner":{"hideWhenLessThanPercentage":3},"mainLabel":{"fontSize":11},"percentage":{"color":"#ffffff","decimalPlaces":0},"value":{"color":"#adadad","fontSize":11},"lines":{"enabled":true,"style":"straight"}},"effects":{"pullOutSegmentOnClick":{"effect":"linear","speed":400,"size":8}},"misc":{"gradient":{"enabled":true,"percentage":100},"canvasPadding":{"top":0,"right":0,"bottom":0,"left":0}},"callbacks":{}});
+									</script>
+								</center>
+							</div>
+						</div>
+					</div>
+				</div>
+	        </div>
+	    </div>    
+	    <div class="row" id="predlog">
+		    <div class="col-sm-6 col-md-12">
+	        	<div class="panel panel-default">
+	        		<div class="panel-heading" id="predlogiKoncni">
+						<div class="row">
+							<p class="p6">Predlogi</p>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row-fluid" id="rezultati">
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		    </div>
+	    </div>
+	</body>
+</html>
