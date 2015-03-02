@@ -1,5 +1,5 @@
 body {
-	padding: 10px;
+	padding: 0px;
      margin: 0;
      /* background: url(background.jpg);
 	background-attachment: fixed;
@@ -9,6 +9,16 @@ body {
 #p1{
 	font-size: 20px;
 	font-family: 'Open Sans';
+}
+.wrapper{
+	float:left;
+	clear:left;
+	display: table;
+	table-layout: fixed;
+}
+img.img-responsive{
+	display: :table-cell;
+	max-width: : 100%;
 }
 .pozdrav{
 	color: #FFFFFF;
@@ -33,7 +43,7 @@ body {
 .navbar-default .navbar-nav > .active > a:hover{
 	color: #FFFFFF;
     background-color: #2f76a7;
-    border-color: none;
+    border-color: #FFFFFF;
 }
 
 #glava {
