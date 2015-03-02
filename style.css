@@ -16,9 +16,9 @@ body {
 	display: table;
 	table-layout: fixed;
 }
-.img-responsive{
-	display: table-cell;
-	max-width: 100%;
+img.img-responsive{
+	display: :table-cell;
+	max-width: : 100%;
 }
 .pozdrav{
 	color: #FFFFFF;
