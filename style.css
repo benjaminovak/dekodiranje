@@ -7,7 +7,7 @@ body {
 	background-color: #F6E3CE;
 }
 #p1{
-	font-size: 20px;
+	font-size: 18px;
 	font-family: 'Open Sans';
 }
 .wrapper{
@@ -60,4 +60,15 @@ img.img-responsive{
     color: #FFFFFF;
     background-color: #2f76a7;
     border-color: none;
+}
+.table-nonfluid {
+	width: auto !important;
+	table-layout: fixed;
+	word-wrap: break-word;
+}
+.table-width{
+	max-width: 100%;
+}
+span.tab{
+    padding: 0 3%;
 }
