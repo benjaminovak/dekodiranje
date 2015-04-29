@@ -1,0 +1,108 @@
+/* Box displaying which letters are available for substitution */
+#freeLetterDisplay{
+    width: 100%;
+    text-align: center;
+}
+
+/* Main element displaying both the original message and its updated substituted equivalent */
+#messageDisplay{
+    width: 100%;
+    background-color: #F6E3CE;
+    text-align: left;
+    border: 3px solid #2f76a7;;
+    border-radius: 10px;
+}
+
+/* Table to display the frequency of each letter in the table under the message display */
+#frequencyDisplay{
+    width: 100%;
+}
+
+/* Words are displayed individually in their own wordDisplay elements in the messageDisplay */
+.wordDisplay{
+    display: inline-block;
+}
+
+/* Element to hold both the original letter and its substitution above it */
+.letterHolder{
+    width: 40px;
+    height: 20px;
+}
+
+/* div elements containing the entire letter object with both original and substitution*/
+.letter{
+    display: inline-block;
+    width: 35px;
+    height: 75px;
+    padding-left: 5px;
+}
+
+/* div element for the crypted letters in the message display */
+.cryptedCharacter{
+    text-align: center;
+    color: black;
+    font-family:"Times New Roman",Times,serif;
+    font-size: 17px;
+    width: 35px;
+    height: 20px;
+}
+
+/* div elements for the free letters that can be dragged about the message and free letters table */
+.decryptedCharacter{ 
+    text-align: center;
+    font-family:"Times New Roman",Times,serif;
+    width: 35px;
+    height: 40px;
+    line-height: 30px;
+    font-size: 20px;
+    margin: 0px;
+    color: white;
+    border-radius: 5px;
+    background-color: #2f76a7;
+    border: 2px solid white;
+    display: inline-block;
+}
+
+.uneditableCharacter{ 
+    text-align: center;
+    font-family:"Times New Roman",Times,serif;
+    width: 20px;
+    height: 40px;
+    line-height: 30px;
+    font-size: 20px;
+    margin: 0px;
+    display: inline-block;
+}
+
+/* div element for the letter in the message that is currently selected by the mouse */
+.highlightedLetter{ 
+    text-align: center;
+    font-family:"Times New Roman",Times,serif;
+    width: 35px;
+    height: 40px;
+    line-height: 30px;
+    font-size: 20px;
+    color: #2f76a7;
+    border-radius: 8px;
+    background-color: #dac5a4;
+    border: 2px solid #2f76a7;
+    display: inline-block;
+}
+
+/* Individual cell in the frequencyDisplay to display a letter and its frequency in the message */
+.letterFrequency{
+    display: inline-block;
+    background-color: #2f76a7;
+    border-radius: 10px;
+    color: white;
+    width: 7%;
+    text-align: center;
+    height: 25px;
+    line-height: 15px;
+    font-size: 20px;
+    margin: 5px;
+    padding: 5px;
+}
+
+
+    

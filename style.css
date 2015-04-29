@@ -10,6 +10,12 @@ body {
 	font-size: 18px;
 	font-family: 'Open Sans';
 }
+#begin{
+	float: right;
+	margin-right: 2%;
+	padding-right: 5%;
+	padding-left: 5%;
+}
 .wrapper{
 	float:left;
 	clear:left;
@@ -23,6 +29,11 @@ img.img-responsive{
 .pozdrav{
 	color: #FFFFFF;
 	margin: 20px;
+}
+.pozdrav1{
+	color: #FFFFFF;
+	margin: 20px;
+	font-size: 24px;
 }
 .logo{
 	width: 100%;
