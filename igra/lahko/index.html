@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	    <title>Kriptogram</title>
+	    <link rel="shortcut icon" href="../../favicon.ico"/>
+	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+	    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<link rel = "stylesheet" type = "text/css" href = "../cryptogram.css">
+	    <link rel="stylesheet" type="text/css" href="../../style.css" />
+	</head>
+	<body>
+		<script type = "text/javascript" src = "../crypto.js"></script>
+		<div class="wrapper col-lg-12 col-md-12 col-sm-12">
+					<div class="container logo">
+					   <div class="navbar-inner">
+					     <div class="container">
+					        <a class="brand" href="../../index.html"> <img src="../../logo1.png" class="img-responsive img-rounded" width="100%"></a>
+					     </div>
+					   </div>
+					</div>
+		</div>
+		<div class="container">
+		   <div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<nav class="navbar navbar-default" id="menu">
+				  <div class="container-fluid">
+				    <div class="navbar-header">
+				      <a class="navbar-brand" href="../index.html">Kriptogram</a>
+				    </div>
+				    <div>
+				      <ul class="nav navbar-nav">
+				        <li><a href="../../index.html">Domov</a></li>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+							  <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Igra<span class="caret"></span></a>
+							  <ul class="dropdown-menu active" role="menu">
+							    <li><a>Težavnosti</a></li>
+							    <li class="divider"></li>
+							    <li><a href="index.html">Lahko</a></li>
+							    <li><a href="../srednje/index.html">Srednje</a></li>
+							    <li><a href="../težko/index.html">Težko</a></li>
+							  </ul>
+							</li>
+						</ul>
+				      </ul>
+				    </div>
+				  
+				  <form class="navbar-form navbar-right" role="search">
+					  <div class="form-group">
+					    <input type="text" class="form-control" placeholder="Search">
+					  </div>
+					  <button type="submit" class="btn btn-default">Išči</button>
+					</form>
+				</nav>
+				</div>
+			</div>
+
+			<div class="row">
+	       <div class="col-lg-12 col-md-12 col-sm-12">
+	        	<div class="panel panel-default">
+	        		<div class="panel-heading" id="glava">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6">
+								<b><span class="pozdrav1">Kriptogram</span></b>
+							</div>
+							<div id ="buttons">
+									<button value = "Begin" class="btn btn-default btn-bg" onclick = "initialize(0);" id="begin">Začni</button>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row-fluid">
+								
+								<div class="col-lg-12 col-md-12 col-sm-12" id = "coreLogic">
+													
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	        </div>
+     	</div>
+
+     	<div class="row">
+	       <div class="col-lg-12 col-md-12 col-sm-12">
+	        	<div class="panel panel-default">
+	        		<div class="panel-heading" id="glava">
+						<div class="row">
+							<div class="col-lg-7 col-md-7 col-sm-7">
+								<b><span class="pozdrav">Frekvence črk v slovenskem jeziku</span></b>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="container-fluid">
+							<div class="row-fluid">
+								<div class="col-lg-12 col-md-12 col-sm-12">
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<table class="table table-hover table-width">
+											<thead>
+											  <tr>
+											    <th>Črke</th>
+												    <th>e</th>
+												    <th>a</th>
+												    <th>o</th>
+												    <th>i</th>
+												    <th>n</th>
+												    <th>l</th>
+												    <th>s</th>
+												    <th>r</th>
+												    <th>j</th>
+												    <th>t</th>
+												    <th>v</th>
+											  </tr>
+											</thead>
+											<tbody>
+											  <tr>
+											    <td><b>Frekvence (%)</b></td>
+												    <td>9,1</td>
+												    <td>9,0</td>
+												    <td>6,3</td>
+												    <td>5,3</td>
+												    <td>5,1</td>
+												    <td>5,0</td>
+												    <td>4,7</td>
+												    <td>4,3</td>
+												    <td>3,8</td>
+												    <td>3,7</td>
+												    <td>3,4</td>
+											  </tr>
+											</tbody>
+										</table>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<table class="table table-hover table-width">
+											<thead>
+											  <tr>
+											  		<th>k</th>
+												    <th>d</th>
+												    <th>p</th>
+												    <th>m</th>
+												    <th>z</th>
+												    <th>b</th>
+												    <th>u</th>
+												    <th>g</th>
+												    <th>č</th>
+												    <th>h</th>
+												    <th>š</th>
+												    <th>c</th>
+												    <th>ž</th>
+												    <th>f</th>
+											  </tr>
+											</thead>
+											<tbody>
+											  <tr>
+											  		<td>10,7</td>
+												    <td>10,5</td>
+												    <td>3,4</td>
+												    <td>3,3</td>
+												    <td>2,1</td>
+												    <td>2,0</td>
+												    <td>1,9</td>
+												    <td>1,6</td>
+												    <td>1,5</td>
+												    <td>1,1</td>
+												    <td>1,0</td>
+												    <td>0,7</td>
+												    <td>0,7</td>
+												    <td>0,1</td>
+											  </tr>
+											</tbody>
+										</table>		
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<div class="col-lg-6 col-md-6 col-sm-6">
+											<b>Najpogostejše dvočrkovne besede:</b> in, na, je, za, ki, da, se, so, pa, po, itd. 
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6">
+											<b>Najpogostejše tročrkovne besede:</b> kot, med, ter, pri, saj, itd.
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+	        </div>
+	     </div>
+
+		</div>
+	</body>
+</html>

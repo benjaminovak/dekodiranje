@@ -62,7 +62,7 @@ function addQ(q) {
     //t = t.replace(/\r/g,'');
     for (var i = t.length - 1; i >= 0; i--) {
         var a = t.charCodeAt(i);
-        console.log(a);
+        //console.log(a);
         if (a === code('Č'))  a = code('Q');
         else if (a === code('Š'))   a = code('X');
         else if (a === code('Ž'))  a = code('Y');
@@ -76,10 +76,13 @@ function addQ(q) {
 /*
  * initialize - called when the begin button is pressed
  */
-function initialize(){
+var ind = null;
+
+function initialize(st){
     $('#begin').each(function() {
         $(this).remove();
     });
+    ind = st;
     dictionary = new Array();
     reverseDict = new Array();
     frequencyTable = new Array();
@@ -96,7 +99,7 @@ function initialize(){
     }
 
     freeLetters = ALPHABET.slice(0); // reset the freeLetters array to a copy of the ALPHABET array
-    window.onresize = updateEssentials;
+    //window.onresize = updateEssentials;
     updateEssentials(); // adds the letter selection, message display, and frequency tables
 }
 
@@ -128,12 +131,19 @@ function updateEssentialsSecondly(){
 function getCryptedMessage(){
     var crypt = new Array(); // array of strings each representing a word
     //var input = addQ("KADAR SLEDITE SVOJI SREČI SE VAM BODO ODPRLA VRATA TAM, KODER STE MISLILI, DA JIH SPLOH NI; IN KODER TUDI NI VRAT ZA NIKOGAR DRUGEGA.");
-    var input = addQ("Človeka osrečijo njegovi lastni napori, brž ko spozna potrebne prvine za srečo - preproste užitke, določeno mero poguma, nesebičnost, ljubezen do dela in predvsem čisto vest. Zdaj sem prepričana, da sreča niso le prazne sanje.");
-    console.log(input);
+    //var input = addQ("Človeka osrečijo njegovi lastni napori, brž ko spozna potrebne prvine za srečo - preproste užitke, določeno mero poguma, nesebičnost, ljubezen do dela in predvsem čisto vest. Zdaj sem prepričana, da sreča niso le prazne sanje.");
+    
+    var input;
+    if(ind === 0)   input = addQ("Sedi orel na veji visokega drevesa in cel dan ne dela nič. Samo sedi, lenari in se sonči. Mimo pride zajec in ga pozdravi:\"Hej, orel, kaj delaš?\" Orel odvrne:\"Nič ne delam, samo sedim tukaj, lenarim in uživam.\"Zajec:\"Pa lahko tudi jaz to počnem?\"Orel:\"Seveda, zajec, zakaj pa ne, še ti se usedi.\"Zajec se usede na tla ter tudi on začne lenariti. Kmalu pa pride mimo lisica, vidi lenega zajca ter ga poje.\n\n Nauk: Sediš in nič ne delaš lahko le, če si na dovolj visokem položaju.");
+    else   input = addQ("Žive naj vsi narodi \nki hrepene dočakat dan, \nda koder sonce hodi, \nprepir iz sveta bo pregnan, \nda rojak prost bo vsak, \nne vrag, le sosed bo mejak!");
+    //console.log(input);
     var i = 0; // index of the current character being investigated
     var currentWord = "";
     while (i < input.length){ // loop through every letter in the input
         var currentCharacter = input.charAt(i).toUpperCase();//.trim()-only deal with upper case letters (withou white space)
+        if(ind === 2){
+            currentCharacter = currentCharacter.trim().split(',').join("");
+        }   
         appendFrequency(currentCharacter); // add the current Letter to the frequency table
 
         if (!(currentCharacter == ' ' || currentCharacter == '\n')){
