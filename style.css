@@ -16,6 +16,12 @@ body {
 	padding-right: 5%;
 	padding-left: 5%;
 }
+#next{
+	float: right;
+	margin-right: 2%;
+	padding-right: 5%;
+	padding-left: 5%;
+}
 .wrapper{
 	float:left;
 	clear:left;

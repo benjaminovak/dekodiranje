@@ -25,17 +25,17 @@
 
 /* Element to hold both the original letter and its substitution above it */
 .letterHolder{
-    width: 40px;
-    height: 20px;
+    width: 20px;
+    height: 14px;
 }
 
 /* div elements containing the entire letter object with both original and substitution*/
 .letter{
     display: inline-block;
-    width: 30px;
-    height: 55px;
+    width: 29px;
     padding-left: 10px;
-    padding-top: 10px;
+	padding-right: 10px;
+    padding-top: 6px;
 }
 
 /* div element for the crypted letters in the message display */
@@ -43,19 +43,19 @@
     text-align: center;
     color: black;
     font-family:"Times New Roman",Times,serif;
-    font-size: 17px;
-    width: 30px;
-    height: 20px;
+    font-size: 15px;
+    width: 29px;
+    height: 15px;
 }
 
 /* div elements for the free letters that can be dragged about the message and free letters table */
 .decryptedCharacter{ 
     text-align: center;
     font-family:"Times New Roman",Times,serif;
-    width: 30px;
-    height: 40px;
+    width: 29px;
+    height: 35px;
     line-height: 30px;
-    font-size: 20px;
+    font-size: 15px;
     margin: 0px;
     color: white;
     border-radius: 5px;
@@ -67,9 +67,9 @@
 .uneditableCharacter{ 
     text-align: center;
     font-family:"Times New Roman",Times,serif;
-    width: 20px;
-    height: 40px;
-    line-height: 30px;
+    width: 5px;
+    height: 20px;
+    line-height: 20px;
     font-size: 20px;
     margin: 0px;
     display: inline-block;
@@ -79,10 +79,10 @@
 .highlightedLetter{ 
     text-align: center;
     font-family:"Times New Roman",Times,serif;
-    width: 30px;
-    height: 40px;
+    width: 28px;
+    height: 35px;
     line-height: 30px;
-    font-size: 20px;
+    font-size: 16px;
     color: #2f76a7;
     border-radius: 8px;
     background-color: #dac5a4;

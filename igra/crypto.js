@@ -53,10 +53,13 @@ function stripBlanks(fld) {
 }
 
 function addQ(q) {
-    if (q == '') {
+    if (q === '' || q === undefined) {
         return false;
     }
     var t = q.toUpperCase();
+	t = t.split(", ").join(",");
+	t = t.split(". ").join(".");
+	//var t = q;
     var ary = crypt();
     var s = '';
     //t = t.replace(/\r/g,'');
@@ -88,6 +91,7 @@ function initialize(st){
     frequencyTable = new Array();
     ALPHABET = new Array(); // constant alphabet array 
     addResetButton();
+	addNextButton();
     var A = "A".charCodeAt(0);
     for (var i = 0; i < 26; i++){ // fill alphabet array
         var newChar = String.fromCharCode(A + i);
@@ -127,16 +131,29 @@ function updateEssentialsSecondly(){
     coreLogic.appendChild(newFrequencyDisplay());
 }
 
+// index of text file 
+var num = Math.floor((Math.random() * 10));;
+//	number of all files
+var N = 9;
+// make a synchronous call
+
+
 // returns the message as an array of words for displaying the message and controlling text wrapping
 function getCryptedMessage(){
     var crypt = new Array(); // array of strings each representing a word
     //var input = addQ("KADAR SLEDITE SVOJI SREČI SE VAM BODO ODPRLA VRATA TAM, KODER STE MISLILI, DA JIH SPLOH NI; IN KODER TUDI NI VRAT ZA NIKOGAR DRUGEGA.");
     //var input = addQ("Človeka osrečijo njegovi lastni napori, brž ko spozna potrebne prvine za srečo - preproste užitke, določeno mero poguma, nesebičnost, ljubezen do dela in predvsem čisto vest. Zdaj sem prepričana, da sreča niso le prazne sanje.");
-    
-    var input;
-    if(ind === 0)   input = addQ("Sedi orel na veji visokega drevesa in cel dan ne dela nič. Samo sedi, lenari in se sonči. Mimo pride zajec in ga pozdravi:\"Hej, orel, kaj delaš?\" Orel odvrne:\"Nič ne delam, samo sedim tukaj, lenarim in uživam.\"Zajec:\"Pa lahko tudi jaz to počnem?\"Orel:\"Seveda, zajec, zakaj pa ne, še ti se usedi.\"Zajec se usede na tla ter tudi on začne lenariti. Kmalu pa pride mimo lisica, vidi lenega zajca ter ga poje.\n\n Nauk: Sediš in nič ne delaš lahko le, če si na dovolj visokem položaju.");
-    else   input = addQ("Žive naj vsi narodi \nki hrepene dočakat dan, \nda koder sonce hodi, \nprepir iz sveta bo pregnan, \nda rojak prost bo vsak, \nne vrag, le sosed bo mejak!");
+	var input;
+	if(ind === 1){	
+		input = addQ("KADAR SLEDITE SVOJI SREČI SE VAM BODO ODPRLA VRATA TAM, KODER STE MISLILI, DA JIH SPLOH NI; IN KODER TUDI NI VRAT ZA NIKOGAR DRUGEGA.");
+	}    
+    else  //input = addQ(textS[0]); 
+	input = addQ(textS[num]); 
+	
     //console.log(input);
+	num++;
+	num = num%(N);
+	console.log(num);
     var i = 0; // index of the current character being investigated
     var currentWord = "";
     while (i < input.length){ // loop through every letter in the input
@@ -402,7 +419,12 @@ function reset(){
     freeLetters = ALPHABET.slice(0);
     dictionary = new Array();
     reverseDict = new Array();
-    updateEssentials();
+    updateEssentialsSecondly();
+}
+
+// go to next cryptogram
+function next(){
+	initialize(ind);
 }
 
 // handles a letter's frequency value in the frequency table
@@ -433,6 +455,14 @@ function addResetButton(){
     }
 }
 
+// adds the next button to the buttons panel for new cryptogram
+function addNextButton(){
+    var buttons = document.getElementById("buttons");
+    if (buttons.getElementsByTagName("button").length <= 1){
+        buttons.appendChild(nextButton());
+    }
+}
+
 // returns a reset button to be appended to the buttons panel
 function resetButton(){
     var button = document.createElement("button");
@@ -441,6 +471,17 @@ function resetButton(){
     button.setAttribute("class","btn btn-default btn-bg");
     button.setAttribute("onclick", "reset();");
     button.textContent = "Začni znova";
+    return button;
+}
+
+// returns a next button to be appended to the buttons panel
+function nextButton(){
+    var button = document.createElement("button");
+    button.setAttribute("value", "Next");
+    button.setAttribute("id", "next");
+    button.setAttribute("class","btn btn-default btn-bg");
+    button.setAttribute("onclick", "next();");
+    button.textContent = "Naslednji";
     return button;
 }
 
@@ -469,7 +510,7 @@ function getElementByAttributeValue(attribute, value)
   }
     return matches;
 }
-
+var textS = ["William Herschel se je zapisal v zgodovino astronomije kot konstruktor\ndaljnogledov,kot neumoren opazovalec neba,prvi raziskovalec Rimske ceste in drugih galaksij.Kot mladenič je iz rodne Nemčije pobegnil v Anglijo.V začetku je bil godbenik,komponist in učitelj glasbe, kasneje pa je spremenil poklic in postal eden največjih astronomov.Bil je samouk v glasbi in v astronomiji. Gradil je vse večje daljnoglede,ki jih je pošiljal na vse strani.", "Kopernik je s svojim delom močno vplival na vso znanost in spremenil človekov pogled na svet. Živel in ustvarjal je na prehodu iz srednjega veka v novi vek, ko so fevdalno družbo pretresali pomembni dogodki. Znanje astronomije je bilo nujno potrebno pri trgovanju na dolgih morskih poteh. Misel o okrogli Zemlji je postajala splošno znana. Vsemu temu je sledila še  nova predstava o zgradbi vesolja. Do Kopernika so mislili, da je Zemlja nepremična, da leži v središču vesoljstva in da se vse zvezde, planeti, Sonce in Luna gibljejo okoli nje." ,"Rodil se je v revni kmečki družini v zasavskem hribovju. Kot matematika ga najbolj poznamo kot avtorja njegovih logaritmov, s katerimi so računali po svetu v znanosti, šolstvu in vsakdanjem življenju vse do množične uporabe elektronskih računalnikov. Kot profesor matematike na šoli je napisal matematična in fizikalna učbenika. Čeprav je Vega s svojimi logaritmi zaslovel predvsem kot matematik, je bil večji del njegovih razprav in učbenikov posvečenih fiziki. Njegova dela v fiziki zajemajo vsa področja mehanike, predvsem teorijo gravitacije in z njo povezano astronomijo.", "Ideje o dveh gibanjih Zemlje, o vrtenju okoli njene osi in kroženju okoli Sonca, so izrekli že nekateri filozofi starega veka. Te misli so utonile v pozabo. Povzel jih je Kopernik, ki je postavil Sonce v središče našega planetnega sistema, Zemljo pa premaknil v vrsto planetov, ki se gibljejo okoli Sonca. Kopernikov nauk je pomenil prelom s številnimi tradicijami in dotedanjim svetovnim nazorom. Ves srednjeveški svet se je naslanjal na nespremenljivost obstoječega reda. Le drzni ljudje so si upali izreči misel o gibanju Zemlje.", "William Herschel se je zapisal v zgodovino astronomije kot konstruktor daljnogledov, kot neumoren opazovalec neba, prvi raziskovalec Rimske ceste in drugih galaksij. Kot mladenič je iz rodne Nemčije pobegnil v Anglijo. V začetku je bil godbenik, komponist in učitelj glasbe, kasneje pa je spremenil poklic in postal eden največjih astronomov. Bil je samouk v glasbi in v astronomiji. Gradil je vse večje daljnoglede, ki jih je pošiljal na vse strani.", "Kolmogorov se je ukvarjal s širokim poljem matematike. Opredelil je matematične osnove verjetnostne teorije in algoritmične teorije naključnosti ter prispeval ključne prispevke k osnovam statistčne mehanike, stohastičnih procesov, teorije informacije, mehanike tekočin in nelinearne dinamike. Vsa ta področja in njihovi odnosi so osnova za kompleksne sisteme, kot jih danes preučujejo.", "S svojimi daljnogledi je štirikrat skrbno pregledal vse nebo, ki ga je lahko videl iz Anglije. Pri tem je našel nov planet ­ Uran. Glavne raziskave je posvetil zvezdam. S svojimi daljnogledi je lahko prodrl globoko v vesolje. Pri tem je ugotovil, da Osončje ne miruje.", "V vsakdanjem življenju imenujemo paradoks nekaj, kar je sicer resnično, pa vendar v nasprotju z našimi predstavami in izkušnjami. Sklepanje iz navidezno pravilnih dejstev, ki nas privedejo do nesmiselnega rezultata, ravno tako imenujemo paradoks.", "Kako znan je bil ta priimek v svetu, pripoveduje naslednji dogodek. Ko je moral nekoč Herschel na meji pokazati potni list, je carinik začuden vzkliknil: \"Herschel, to vendar ni priimek, to je zvezda!\"" ];
 /*
  * isLetter - determines whether a letter is between A and Z 
  * Note that every letter passed as an argument will be changed to uppercase
@@ -481,3 +522,4 @@ function isLetter(letter){
 function code(letter){
     return letter.charCodeAt(0);
 }
+
