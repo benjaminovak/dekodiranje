@@ -4,12 +4,22 @@
     text-align: center;
 }
 
+/* Box where user have crypted message */
+#messageOutput{
+    border-radius: 5px;
+    border: 2px solid #2f76a7;
+    font-size: 18px;
+	color: #2f76a7;
+    text-transform: uppercase;
+	width: 100%;
+}
+
 /* Main element displaying both the original message and its updated substituted equivalent */
 #messageDisplay{
     width: 100%;
     background-color: #F6E3CE;
     text-align: left;
-    border: 3px solid #2f76a7;;
+    border: 3px solid #2f76a7;
     border-radius: 10px;
 }
 
