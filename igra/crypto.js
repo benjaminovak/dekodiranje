@@ -141,6 +141,8 @@ var num2 = Math.floor((Math.random() * M));
 
 // returns the message as an array of words for displaying the message and controlling text wrapping
 function getCryptedMessage(){
+	//$('#messageOutput').val("");
+	$("#messageOutput").html("");
     var crypt = new Array(); // array of strings each representing a word
     var input;
 	if(ind === 1)	input = addQ(textS2[num2]);  
@@ -150,6 +152,7 @@ function getCryptedMessage(){
 	num = num%(N);
 	num2++;
 	num2= num2%(M);
+	
 	$('#messageOutput').append(input);
     var i = 0; // index of the current character being investigated
     var currentWord = "";
